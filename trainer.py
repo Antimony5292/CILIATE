@@ -7,7 +7,7 @@ from torch.optim import Adam
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torchvision.transforms import Compose, CenterCrop, Normalize, Scale, Resize, ToTensor, ToPILImage
+from torchvision.transforms import Compose, CenterCrop, Normalize, Resize, ToTensor, ToPILImage
 from torchvision.models import resnet18
 from torch.optim.lr_scheduler import MultiStepLR
 # from torchsampler import ImbalancedDatasetSampler
@@ -215,9 +215,9 @@ class Trainer:
                         batch_size=batch_size, shuffle=False)
             
             # Set optimizer and scheduler
-#             optimizer = optim.SGD(self.model.parameters(), lr=lr, momentum=0.9,  weight_decay=2e-4)
+            optimizer = optim.SGD(self.model.parameters(), lr=lr, momentum=0.9,  weight_decay=2e-4)
 
-            optimizer = optim.Adam(self.model.parameters(), lr=lr)
+#            optimizer = optim.Adam(self.model.parameters(), lr=lr)
 #             scheduler = MultiStepLR(optimizer, [300], gamma=0.1)
             scheduler = MultiStepLR(optimizer, [100, 150, 200], gamma=0.1)
             # Print the number of classes have been trained
