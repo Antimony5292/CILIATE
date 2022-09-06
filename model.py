@@ -8,7 +8,7 @@ import torch.nn as nn
 import math
 import numpy as np
 
-device = 'cuda:2'
+device = 'cuda:1'
 
 __all__ = ['Resnet']
 
