@@ -6,9 +6,9 @@ import random
 # Cifar100 data loader
 class Cifar100:
     def __init__(self, batch_num=5):
-        with open('cifar-100-python/train','rb') as f:
+        with open('./data/cifar-100-python/train','rb') as f:
             self.train = pickle.load(f, encoding='latin1')
-        with open('cifar-100-python/test','rb') as f:
+        with open('./data/cifar-100-python/test','rb') as f:
             self.test = pickle.load(f, encoding='latin1')
         self.train_data = self.train['data']
         self.train_labels = self.train['fine_labels']

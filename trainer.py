@@ -25,7 +25,6 @@ from imbalanced import ImbalancedDatasetSampler
 from model import Resnet, device
 from cifar100 import Cifar100
 from flowers import Flowers
-from CUB import CUBS
 from cars import Cars
 from copy import deepcopy
 from tqdm.notebook import tqdm
@@ -305,7 +304,7 @@ class Trainer:
             scheduler.step()
         return model
     
-    def train(self, batch_size, epoches, lr, max_size, method, ita, loss_name, dropout_state, random_select):
+    def train(self, batch_size, epoches, lr, method, ita, loss_name, dropout_state, random_select):
         total_cls = self.total_cls
         criterion = nn.CrossEntropyLoss()
         begin_time = time.time()
@@ -345,21 +344,6 @@ class Trainer:
             train_xs.extend(train_x)
             print('train_xs: ',len(train_xs))
             train_ys.extend(train_y)
-#             val_xs = []
-#             val_ys = []
-#             train_xs = []
-#             train_ys = []
-#             print(f'number of trainset: {len(train)+len(val)}, number of valset: {len(test)}')
-#             train_x, train_y = zip(*train)
-#             val_x, val_y = zip(*val)
-#             test_x, test_y = zip(*test)
-
-#             train_xs.extend(train_x)
-#             train_xs.extend(val_x)
-#             train_ys.extend(train_y)   
-#             train_ys.extend(val_y)
-#             val_xs.extend(test_x)
-#             val_ys.extend(test_y)
 
             # Transform data and prepare dataloader
             train_data = DataLoader(BatchData(train_xs, train_ys, self.input_transform, is_ori=self.is_ori),

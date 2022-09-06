@@ -14,8 +14,8 @@ class Flowers:
         self.exempler_num = 200
         self.current_step = 0
         self.batch_num = 5
-        self.train_data = datasets.ImageFolder('/data/gxq/Finetuning/data/flowers/train',transform=transform)
-        self.test_data = datasets.ImageFolder('/data/gxq/Finetuning/data/flowers/test',transform=transform)
+        self.train_data = datasets.ImageFolder('./data/flowers/train',transform=transform)
+        self.test_data = datasets.ImageFolder('./data/flowers/test',transform=transform)
         
         self.train_groups, self.test_groups, self.val_groups = self.initialize()
 #         self.train_groups = self.initialize()
@@ -52,7 +52,7 @@ class Flowers:
                 test_groups[2].append((test_data,test_label))
             elif 60 <= test_label < 80:
                 test_groups[3].append((test_data,test_label))
-            elif 80 <= test_label < 100:
+            elif 80 <= test_label < 102:
                 test_groups[4].append((test_data,test_label))
 
         # Build validation set with test images of old_classes and new_classes to 

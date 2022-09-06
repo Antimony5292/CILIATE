@@ -15,8 +15,8 @@ class Cars:
         self.inc_num = inc_num
         self.current_step = 0
         self.batch_num = inc_num
-        self.train_data = datasets.ImageFolder('/data/gxq/Finetuning/data/Cars/train',transform=transform)
-        self.test_data = datasets.ImageFolder('/data/gxq/Finetuning/data/Cars/test',transform=transform)
+        self.train_data = datasets.ImageFolder('./data/Cars/train',transform=transform)
+        self.test_data = datasets.ImageFolder('./data/Cars/test',transform=transform)
         self.base_cls = 196//self.inc_num
         self.train_groups, self.test_groups, self.val_groups = self.initialize()
 #         self.train_groups = self.initialize()
@@ -32,16 +32,7 @@ class Cars:
             # Split into five groups
             train_groups[train_label//self.base_cls].append((train_data,train_label))
             train_groups[self.inc_num-1].extend(train_groups[self.inc_num])
-#             if train_label < 40:
-#                 train_groups[0].append((train_data,train_label))
-#             elif 40 <= train_label < 80:
-#                 train_groups[1].append((train_data,train_label))
-#             elif 80 <= train_label < 120:
-#                 train_groups[2].append((train_data,train_label))
-#             elif 120 <= train_label < 160:
-#                 train_groups[3].append((train_data,train_label))
-#             elif 160 <= train_label < 200:
-#                 train_groups[4].append((train_data,train_label))
+
 
         # split test data into 5 groups
         test_groups = [[] for g in range(self.inc_num+1)]
@@ -49,16 +40,7 @@ class Cars:
 #             test_data = test_data#.permute(1,2,0)
             test_groups[test_label//self.base_cls].append((test_data,test_label))
             test_groups[self.inc_num-1].extend(test_groups[self.inc_num])
-#             if test_label < 40:
-#                 test_groups[0].append((test_data,test_label))
-#             elif 40 <= test_label < 80:
-#                 test_groups[1].append((test_data,test_label))
-#             elif 80 <= test_label < 120:
-#                 test_groups[2].append((test_data,test_label))
-#             elif 120 <= test_label < 160:
-#                 test_groups[3].append((test_data,test_label))
-#             elif 160 <= test_label < 200:
-#                 test_groups[4].append((test_data,test_label))
+
 
         # Build validation set with test images of old_classes and new_classes to 
         val_groups = [[],[],[],[],[]]
