@@ -26,7 +26,6 @@ It does not require modifying model training protocol or architecture.
 ```
 
 
-## Results
 
 
 ## <span id="setup">Setup</span>
